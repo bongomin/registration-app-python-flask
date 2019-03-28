@@ -14,9 +14,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" style="color:white;">
+                {%if session.logged_in%}
+                <li><a href="/logout" style="color:white; font-size: 18px;">Logout</a></li> 
+                {%else%}
                 <li><a href="/" style="color:white; font-size: 18px;">Home</a></li>
                 <li><a href="/about" style="color:white; font-size: 18px;">About</a></li>
-                <li><a href="/contact" style="color:white; font-size: 18px;">Contact</a></li>
+                <li><a href="/contact" style="color:white; font-size: 18px;">Contact</a></li>   
+                {%endif%}
+
             </ul>
             <div class="pull-right" style="margin-top:10px;">
             <a href="/login">

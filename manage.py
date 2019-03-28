@@ -42,6 +42,8 @@ def contact_page():
 def forgot_password():
     return render_template('forgot_password.html')
     
+
+    
 class RegisterForm(Form):
     name = StringField('Name',[validators.Length(min =1 ,max=50)])
     username = StringField('username',[validators.Length(min=4, max=25)])
@@ -99,7 +101,7 @@ def login():
 
 
            flash('you are logged in ','success')
-           return redirect(url_for('index'))
+           return redirect(url_for('dashboard'))
        else:
            error ='invalid login'
            return render_template('login.html',error = error)
@@ -130,6 +132,11 @@ def logout():
   session.clear()
   flash('you are logged out of the system','success')
   return redirect(url_for('login'))
+  
+@app.route('/dashboard')
+@is_logged_in
+def dashboard():
+    return render_template('dashboard.html')
 
 
 
@@ -138,5 +145,5 @@ def logout():
 
 
 if __name__=='__main__':
-    app.secret_key="P@55w0rd55"
+    app.secret_key="P@%^jfhgksn"
     app.run(debug=True)
